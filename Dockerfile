@@ -1,4 +1,4 @@
-FROM i386/alpine:latest as base
+FROM amd64/alpine:latest as base
 
 FROM base as build
 RUN apk --no-cache add bash g++
