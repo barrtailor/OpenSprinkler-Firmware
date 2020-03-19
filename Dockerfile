@@ -1,4 +1,4 @@
-FROM amd64/alpine:latest as base
+FROM i386/alpine:latest as base
 
 FROM base as build
 RUN apk --no-cache add bash g++
@@ -8,6 +8,7 @@ RUN ./build.sh -s demo
 
 FROM base
 RUN apk --no-cache add libstdc++ && \
+    mkdir /OpenSprinkler && \
     mkdir -p /data/logs
 WORKDIR /OpenSprinkler
 RUN ln -s /data/stns.dat && \
