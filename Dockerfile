@@ -8,7 +8,6 @@ RUN ./build.sh -s demo
 
 FROM base
 RUN apk --no-cache add libstdc++ && \
-    mkdir /OpenSprinkler && \
     mkdir -p /data/logs
 WORKDIR /OpenSprinkler
 RUN ln -s /data/stns.dat && \
@@ -17,7 +16,7 @@ RUN ln -s /data/stns.dat && \
     ln -s /data/logs
 COPY --from=build /code/OpenSprinkler /OpenSprinkler/OpenSprinkler
 
-VOLUME /data
+VOLUME /data /OpenSprinkler
 
 EXPOSE 80
 
